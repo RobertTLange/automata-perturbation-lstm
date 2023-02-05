@@ -1,0 +1,135 @@
+{
+    "train_config": {
+        "data_path": null,
+        "momentum": null,
+        "log_network_stats": 0,
+        "seed_id": 0,
+        "batch_size": 128,
+        "num_torch_threads": 10,
+        "device_name": "cpu",
+        "num_epochs": 10,
+        "log_every_batches": 100,
+        "opt_type": "Adam",
+        "l_rate": 0.001,
+        "w_decay": 0.01,
+        "activity_weight": 0.00,
+        "train_test_split": 0.2,
+        "only_final_pred": 0,
+        "balanced_labels": 0,
+        "lrate_schedule": {
+            "schedule_type": "multiplicative-decay",
+            "schedule_inputs": {
+                "step_size": 5,
+                "gamma": 0.1
+            }
+        },
+        "sim_config": {
+            "pz_size": 3,  # Perturbation zone size
+            "perturb_connect": true,  # Perturb connected cells or random
+            "a0": 1.0,
+            "w0": 1.8,
+            "m": 1.0,
+            "Lx": 25,
+            "Ly": 25,
+            "T_obs": 40,
+            "sample_perturb": 1,
+            "perturb_range": [
+                20,
+                39
+            ],
+            "fixed_perturb": 0,
+            "T_perturb": 30,
+            "dt": 0.1,
+            "N_sim": 10000,
+            "t_act": 1.0,
+            "t_ref": 3.0,
+            "save_every_step": 2,
+            "store_all_cells": 1,
+            "save_simulations": 0,
+            "cell_stimuli": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9
+            ],
+            "perturb_duration": 3
+        },
+        "a0": 1.0,
+        "w0": 1.8,
+        "perturb_duration": 3,
+        "local_data_gen": 1,
+        "start_t": 20,
+        "binary_labels": 1,
+        "label_threshold": 1,
+        "num_patches_per_sequence": 3,
+        "min_center_distance": 3,
+        "max_center_distance": 3,
+        "one_hot_recode": 1
+    },
+    "log_config": {
+        "time_to_track": [
+            "total_batches",
+            "num_epoch",
+            "batch_in_epoch"
+        ],
+        "what_to_track": [
+            "train_loss",
+            "train_acc",
+            "test_loss",
+            "test_acc"
+        ],
+        "time_to_print": [
+            "num_epoch",
+            "total_batches",
+            "time_elapsed"
+        ],
+        "what_to_print": [
+            "train_loss",
+            "train_acc",
+            "test_loss",
+            "test_acc"
+        ],
+        "print_every_k_updates": 1,
+        "model_type": "torch",
+        "overwrite": 1,
+        "use_tboard": 0,
+        "verbose": true
+    },
+    "model_config": {
+        "stem_info": {
+            "input_dim": [
+                1,
+                18
+            ],
+            "layers_info": [
+                [
+                    "flatten"
+                ],
+                [
+                    "linear",
+                    128,
+                    1
+                ],
+                [
+                    "lstm",
+                    64,
+                    1,
+                    1,
+                    1,
+                    0
+                ]
+            ],
+            "output_act": "identity",
+            "hidden_act": "relu",
+            "learn_hidden_init": 1
+        },
+        "num_classes": 2,
+        "num_hidden_units": 64
+    }
+}

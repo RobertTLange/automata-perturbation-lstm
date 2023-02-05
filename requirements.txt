@@ -1,0 +1,4 @@
+mle-logging==0.0.4
+numba
+scikit-learn
+torch==1.6.0
